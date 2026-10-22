@@ -69,14 +69,12 @@ class MyHashMap:
                 self._resize(2 * len(self._table) - 1)
 
     def remove(self, key: int) -> None:
-        """Elimina la clau si existeix, marcant la posició com ESBORRAT."""
         idx = self._find(key)
         if idx is not None:
             self._table[idx] = [None, None, ESBORRAT]
             self._n -= 1
 
     def _resize(self, new_cap: int) -> None:
-        """Crea una taula nova de mida new_cap i re-insereix les parelles OCUPAT."""
         old_table = self._table
 
         self._table = [[None, None, LLIURE] for _ in range(new_cap)]
